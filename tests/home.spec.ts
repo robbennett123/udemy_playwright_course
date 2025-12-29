@@ -42,6 +42,19 @@ test('Click Get Started button using CSS selector', async ({ page }) => {
 
 })
 
+test('Verify heading text is visible using text selector', async ({ page }) => {
+     //open url
+     await page.goto('https://practice.sdetunicorns.com');
+
+     //find text locator - using text in "" so looking for exact match
+     const headingText = await page.locator('text="Think different. Make different."')
+
+     //verify headingText is visible
+        await expect(headingText).toBeVisible();
+
+
+})
+
 
 })
     
