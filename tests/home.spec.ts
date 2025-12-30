@@ -76,12 +76,32 @@ test('Verify Search link is present', async ({ page }) => {
      const searchLink = page.locator('.zak-header-search__toggle').first();
 
      //verify searchLink is visible
-    await expect(searchLink).toBeVisible();
-
-   
-
+    await expect(searchLink).toBeVisible(); 
 
 })
+
+test('Verify text for all menu bar nav links', async ({ page }) => {
+   const expectedLinks=[
+      'Home',
+      'About',
+      'Shop',
+      'Blog',
+      'Contact',
+      'My account',
+     
+   ]
+
+     //open url
+     await page.goto('https://practice.sdetunicorns.com');
+
+     //find nav links 
+     const navLinks = page.locator('#zak-primary-menu li[id*=menu]');
+
+     //verify navLinks text
+    expect(await navLinks.allTextContents()).toEqual(expectedLinks); 
+
+})
+
 
 
 })
