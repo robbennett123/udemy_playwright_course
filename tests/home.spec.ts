@@ -55,6 +55,34 @@ test('Verify heading text is visible using text selector', async ({ page }) => {
 
 })
 
+test('Verify home link is enabled using text and CSS selector', async ({ page }) => {
+     //open url
+     await page.goto('https://practice.sdetunicorns.com');
+
+     //find home text\ locator
+     const homeText = await page.locator('#zak-primary-menu >> text=Home')
+
+     //verify headingText is visible
+        await expect(homeText).toBeVisible();
+
+
+})
+
+test('Verify Search link is present', async ({ page }) => {
+     //open url
+     await page.goto('https://practice.sdetunicorns.com');
+
+     //find search link. I had to find thid lucator using .first() because there are two elements with the same class name. Couldn't get a better locator to work on the
+     const searchLink = page.locator('.zak-header-search__toggle').first();
+
+     //verify searchLink is visible
+    await expect(searchLink).toBeVisible();
+
+   
+
+
+})
+
 
 })
     
