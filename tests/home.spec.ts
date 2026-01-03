@@ -100,11 +100,48 @@ test('Verify text for all menu bar nav links', async ({ page }) => {
      //verify navLinks text
     expect(await navLinks.allTextContents()).toEqual(expectedLinks); 
 
+     //or if you want to iterate through all links but remember you're using 'nth' so navLinks only gets one element
+   
+   for (const el of await navLinks.elementHandles()) {
+   console.log(await el.textContent())
+   }
+
 })
 
+test('Verify text for a specific menu bar nav link', async ({ page }) => {
+   const expectedLinks=[
+      'Home',
+      'About',
+      'Shop',
+      'Blog',
+      'Contact',
+      'My account',
+     
+   ]
+
+     //open url
+     await page.goto('https://practice.sdetunicorns.com');
+
+     //find nav links 
+     const navLinks = page.locator('#zak-primary-menu li[id*=menu]').nth(3); //3rd link Blog
+
+     //verify navLinks text by referencing expectedLinks array
+    expect(await navLinks.textContent()).toEqual(expectedLinks[3]); 
+    //or reference directly
+    expect(await navLinks.textContent()).toEqual("Blog"); 
+
+    //or if you want to iterate through all links but remember you're using 'nth' so navLinks only gets one element
+    //for(let i=0; i<await navLinks.count(); i++){
+    //  console.log (await navLinks.nth(i).textContent());
+   // }
+   for (const el of await navLinks.elementHandles()) {
+   console.log(await el.textContent())
+   }
 
 
 })
+
+});
     
 
  
