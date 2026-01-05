@@ -1,8 +1,8 @@
 import{test, expect}from'@playwright/test';
 
-test.describe('submitContactForm', () => {
+test.describe('Blog Page', () => {
 
-    test('expectedBlogPosts', async ({ page }) => {
+    test('Verify recent blog posts', async ({ page }) => {
         const expectedblogPostList=[
             'IFrame Sample',
             'Successful Marketing Ads for Your Business',
