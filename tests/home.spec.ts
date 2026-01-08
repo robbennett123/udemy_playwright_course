@@ -21,6 +21,9 @@ test('Click Get Started button using object id', async ({ page }) => {
      //open url
      await page.goto('https://practice.sdetunicorns.com');
 
+     //check page does not have #get-started in URL
+     await expect(page).not.toHaveURL('/.*#get-started');
+
      //click button
      await page.click("[id='get-started']");
 
@@ -28,9 +31,6 @@ test('Click Get Started button using object id', async ({ page }) => {
         await expect(page).toHaveURL('https://practice.sdetunicorns.com/#get-started');
 
 
-})
-test('Click Get Started button using CSS selector', async ({ page }) => {
-     //open url
      await page.goto('https://practice.sdetunicorns.com');
 
      //click button
