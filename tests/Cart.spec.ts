@@ -53,6 +53,17 @@ await page.setInputFiles('input#upfile_1', filePath);
 // click Submit button
 await page.getByRole('button', { name: 'Upload File' }).click();
 
+//If you upload very large files, you may need to add a wait here to allow time for the upload to complete
+/*
+The wrong way to do this: A hardcoded wait
+await page.waitForTimeout(5000); // Wait for 5 seconds
+*/
+
+//The right way to do this: Wait for a specific event or element that indicates the upload is complete (awit for state)
+
+await page.locator('#wfu_messageblock_header_1_label_1').waitFor({ state: 'visible', timeout: 10000 }); // Wait for up to 10 seconds
+
+
 // Verify file upload success
     await expect(page.locator('#wfu_messageblock_header_1_label_1')).toContainText('pngFile.png uploaded successfully');
 })
