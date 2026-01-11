@@ -1,3 +1,9 @@
+//This is a Playwright test script that uses Page Object Model design principles to test the homepage of a practice e-commerce site.
+//This file was converted from a copy of home.spec.ts to demonstrate POM design.
+//POM design involves creating separate classes for each page of the application being tested.
+//Each class contains methods and locators that represent actions that can be performed on that page.
+//This helps to keep the test scripts clean and maintainable by separating the test logic from the page-specific details.
+
 import { test, expect } from '@playwright/test';
 
 test.describe('Home', () => {
